@@ -10,9 +10,9 @@ A personal website powered by [Hapi.js](https://hapijs.com/)
 
 ### Running the app
 - Development
-    - `nodemon index.js`
+    - `npm run dev`
 - Production
-    - `node index.js`
+    - `npm run prod`
 
 ### Directory Structure
 

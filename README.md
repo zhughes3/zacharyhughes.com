@@ -6,6 +6,7 @@ A personal website powered by [Hapi.js](https://hapijs.com/)
 
 1. [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
 2. [nodemon](https://nodemon.io/)
+3. [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/download/)
 
 ### Running the app
 - Development

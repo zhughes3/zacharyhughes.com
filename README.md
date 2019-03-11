@@ -1,35 +1,51 @@
-# Hapi.js Boilerplate
+# ZacharyHughes.com
 
-This repository is heavily influenced by [Hapi Starter Kit](https://github.com/Codigami/hapi-starter-kit)
+A personal website powered by [Hapi.js](https://hapijs.com/)
 
 ### Prereqs
 
-1. MongoDB
-    ```bash
-        brew update
+1. [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
+2. [nodemon](https://nodemon.io/)
 
-        brew install mongodb
-
-        # start mongodb daemon
-        mongod
-    ```
+### Running the app
+- Development
+    - `nodemon index.js`
+- Production
+    - `node index.js`
 
 ### Directory Structure
 
 ```txt
 .
 |-- README.md
-|-- config # environment and configuration variables get put here
+|-- config # environment variables
 |   `-- default.json
+|-- database.js
 |-- index.js
+|-- models
+|   |-- Blurb.js
+|   `-- Post.js
 |-- package.json
 |-- plugins.js
-|-- public # frontend public assets get put in this directory
+|-- public # public assets
+|   |-- admin.html
+|   |-- blurbs-list.htm
+|   |-- images # uploaded images get saved here
+|   |-- posts-list.html
+|   |-- script.js
+|   `-- style.css
 |-- routes.js
 |-- server
+|   |-- posts
+|   |   |-- postHandler.js
+|   |   `-- postRoutes.js
 |   `-- utils
-|       `-- logger.js
+|       |-- logger.js
+|       `-- utils.js
 |-- server.js
-
+|-- templates # handlebar templates
+|   `-- post.html
+`-- yarn.lock
 ```
+
 

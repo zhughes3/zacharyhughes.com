@@ -1,0 +1,30 @@
+body {
+	background: #21303b;
+	color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+div#title > p {
+	font-size: 40px;
+	line-height: 190px;
+	font-family: Helvetica, sans-serif;
+	font-weight: bold;
+	text-align: center;
+}
+
+div#title {
+	outline: 1px dashed #98abb9;
+	outline-offset: -5px;
+	
+	background-color: #556068;
+	height: 200px;
+	width: 400px;
+	margin: 100px auto;
+	
+	-webkit-box-shadow: 2px 2px 2px #000;
+	-mos-box-shadow: 2px 2px 2px #000;
+	box-shadow: 2px 2px 2px #000;
+}

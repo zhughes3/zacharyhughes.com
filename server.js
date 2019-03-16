@@ -8,6 +8,7 @@ const Handlebars = require('handlebars');
 const routes = require('./routes');
 const plugins = require('./plugins');
 const logger = require('./server/utils/logger');
+const validate = require('./server/users/userHandler').validate;
 
 exports.deployment = async() => {
     const server = new Hapi.server({
@@ -44,6 +45,8 @@ exports.deployment = async() => {
     process.on('SIGTERM', gracefulStopServer);
 
     await server.register(plugins);
+
+    server.auth.strategy('simple', 'basic', { validate });
 
     server.views({
         engines: {

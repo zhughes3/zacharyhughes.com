@@ -37,7 +37,10 @@ const routes = [
         path: '/admin',
         handler: function(request, h) {
             return h.file('admin.html')
-        }
+        },
+        config: {
+            auth: 'simple'
+        } 
     }
 ];
 

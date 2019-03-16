@@ -3,7 +3,7 @@
 const config = require('config');
 const postHandler = require('./postHandler');
 
-let routes = [
+const routes = [
     {
         method: 'POST',
         path: '/posts',
@@ -27,7 +27,5 @@ let routes = [
         handler: postHandler.readPost
     }
 ];
-
-routes.push();
 
 module.exports = routes;

@@ -29,7 +29,7 @@ const routes = [
         method: 'GET',
         path: '/',
         handler: function(request, h) {
-            return h.file('posts-list.html')
+            return h.file('index.html')
         }
     },
     {
@@ -42,6 +42,15 @@ const routes = [
             auth: 'simple'
         } 
     }
+    ,
+    {
+        method: 'GET',
+        path: '/dev',
+        handler: function(request, h) {
+            return h.file('posts-list.html');
+        }
+    }
+    
 ];
 
 glob.sync('./server/**/*Routes.js').forEach((file) => {

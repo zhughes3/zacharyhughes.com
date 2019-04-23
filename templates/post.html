@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
-<title>Z H: {{ post.title }}</title>
+<html lang="en">
+<title>Zachary Hughes: {{ post.title }}</title>
 <head>
-<link rel="stylesheet" href="/bootstrap-4.2.1-dist/css/bootstrap.min.css">
-<script src="/bootstrap-4.2.1-dist/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+    <link href="../post.css" rel="stylesheet">
 </head>
 <body>
-        <nav class="navbar sticky-top navbar-light bg-light">
-          <a class="navbar-brand" href="#">ZH</a>
-        </nav>
-        <div class="container">
-            <p class="lead">Because it's important to document things.</p>
-            {{{ post.content }}}
-        </div>
-        
+  <main>
+    <article>
+      <header>
+        <h1>{{ post.title }}</h1>
+        <time datetime="{{ post.date}}">{{ post.date}}</time>
+      </header>
+      {{{ post.content }}}
+    </article>
+  </main>
 </body>
 </html>

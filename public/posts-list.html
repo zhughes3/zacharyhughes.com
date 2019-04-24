@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Zachary Hughes</title>
+<title>zachary.hughes</title>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
@@ -17,6 +17,13 @@
   </main>
 
   <script>
+    function toPrettyPrintDate(date) {
+      if (!(date instanceof Date)) {
+        date = new Date(date);
+      }
+      let months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+      return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    }
     function appendPost(parentContainer, post) {
       var title = post.title;
       var imgSrc = post.img.split('public')[1];
@@ -26,7 +33,7 @@
       var tag = post.tag;
       var slug = post.slug;
       var link = `/posts/${slug}`;
-      var content = `<li><a href="${link}">${title.toLowerCase()}</a><time datetime="${date}">${date}</time></li>`;
+      var content = `<li><a href="${link}">${title.toLowerCase()}</a><time datetime="${date}">${toPrettyPrintDate(date)}</time></li>`;
       // var content = '<div class="card flex-md-row mb-4 shadow-sm h-md-250">';
       // content += '<div class="card-body d-flex flex-column align-items-start">';
       // content += '<strong class="d-inline-block mb-2 text-primary">' + tag + '</strong>';

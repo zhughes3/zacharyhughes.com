@@ -4,7 +4,7 @@ const Mongoose = require('mongoose');
 const logger = require('./server/utils/logger');
 const config = require('config');
 
-Mongoose.connect(config.get('database.url'));
+Mongoose.connect(config.get('database.url'), { useNewUrlParser: true });
 
 let db = Mongoose.connection;
 

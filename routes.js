@@ -41,16 +41,21 @@ const routes = [
         config: {
             auth: 'simple'
         } 
-    }
-    ,
+    },
     {
         method: 'GET',
         path: '/dev',
         handler: function(request, h) {
             return h.file('posts-list.html');
         }
+    },
+    {
+        method: 'GET',
+        path: '/about',
+        handler: function(request, h) {
+            return h.file('about.html');
+        }
     }
-    
 ];
 
 glob.sync('./server/**/*Routes.js').forEach((file) => {

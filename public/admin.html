@@ -8,35 +8,49 @@
     </head>
 <body>
     <main>
-        <h1>admin</h3>
-        <h3>New Post</h3>
+        <h1>admin</h1>
             <form method="POST" action="/posts" enctype="multipart/form-data">
-                <label for="post-title">Title</label>
-                <input type="text" class="form-control" name="post-title" id="post-title" aria-describedby="post-title" placeholder="Enter title of your post">
-                
-                <label for="post-description">Description</label>
-                <input type="text" class="form-control" name="post-description" id="post-description" placeholder="Description">
-                <small class="form-text text-muted">Short summary describing the content of your post.</small>
+                <fieldset>
+                    <legend>New Post</legend>
+                    <p>
+                        <input type="text" name="post-title" id="post-title" aria-describedby="post-title" placeholder="Enter title of your post">
+                        <label for="post-title">Title</label>
+                    </p>
+                    <p>
+                        <input type="text" name="post-description" id="post-description" placeholder="Description">
+                        <label for="post-description">Description</label>
+                        <small class="form-text text-muted">Short summary describing the content of your post.</small>
+                    </p>
+                    <p>
+                        <input type="text" name="post-tag" id="post-tag" placeholder="Tag">
+                        <label for="post-tag">Tag</label>
+                        <small class="form-text text-muted">Topic of your post</small>
+                    </p>
+                    <p>
+                        <input type="text" name="post-tag" id="post-tag" placeholder="Tag">
+                        <label for="post-tag">Tag</label>
+                        <small class="form-text text-muted">Topic of your post</small>
+                    </p>
+                    <p>
+                        <textarea name="post-content" id="post-content" rows="10"></textarea>
+                        <label for="post-content">Content</label>
+                        <small class="form-text text-muted">The content of your post, written in Markdown.</small>
+                    </p>
+                    <p>
+                        <label for="post-img">Upload Image</label>
             
-                <label for="post-tag">Tag</label>
-                <input type="text" class="form-control" name="post-tag" id="post-tag" placeholder="Tag">
-                <small class="form-text text-muted">Topic of your post</small>
-            
-                <label for="post-content">Content</label>
-                <textarea class="form-control" name="post-content" id="post-content" rows="10"></textarea>
-                <small class="form-text text-muted">The content of your post, written in Markdown.</small>
-            
-                <label for="post-img">Upload Image</label>
-                
-                    <span class="input-group-btn">
-                        <span class="btn btn-default btn-file">
-                            Browse... <input type="file" accept="image/*" name="post-img" id="post-img" onchange="previewImage(event)">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse... <input type="file" accept="image/*" name="post-img" id="post-img" onchange="previewImage(event)">
+                            </span>
                         </span>
-                    </span>
-                
-                <img id='img-upload'/>
-                
-                <input type="submit" class="btn btn-primary"></input>
+                        
+                        <img id='img-upload'/>
+                    </p>
+                    <p>
+                        <input type="submit" class="btn btn-primary"></input>
+                    </p>
+                </fieldset>
             </form>
     </main>
     

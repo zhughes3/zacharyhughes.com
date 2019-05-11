@@ -1,11 +1,13 @@
 body {
-    font-family: 'Nanum Myeongjo', serif;
+    font-family: 'Open Sans', sans-serif;    
     background-color: #fffaf7;
 }
 main {
     max-width: 70ch;
     padding: 2ch;
     margin: auto;
+    font-family: 'Noto Sans', sans-serif;
+
 }
 section {
     margin-bottom: 2rem;
@@ -21,3 +23,7 @@ a:hover {
 ::selection {
     background-color: #fffaaa;
 }
+
+h1, h2, h3, h4,h5,h6 {
+    font-family: 'Nanum Myeongjo', serif;
+  }

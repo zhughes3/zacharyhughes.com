@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }} | {{ resource }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+    <link href="../list.css" rel="stylesheet">
+</head>
+<body>
+<main>
+    <header>
+        <h1>{{ resource }}</h1>
+        <p>{{ resource_description }}</p>
+    </header>
+    <nav>
+        <ol></ol>
+    </nav>
+    <script>
+      function toPrettyPrintDate(date) {
+        if (!(date instanceof Date)) {
+          date = new Date(date);
+        }
+        let months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+      }
+
+      function appendPost(parentContainer, post) {
+        var title = post.title;
+        // var imgSrc = post.img.split('public')[1];
+        var date = post.date;
+        // var description = post.description;
+        // var id = post._id;
+        // var tag = post.tag;
+        var slug = post.slug;
+        var link = `/{{{ resource }}}/${slug}`;
+        var content = `<li><a href="${link}">${title.toLowerCase()}</a><time datetime="${date}">${toPrettyPrintDate(date)}</time></li>`;
+        parentContainer.innerHTML += content;
+      }
+
+      var container = document.getElementsByTagName('ol')[0];
+      var posts;
+      fetch('/{{{ resource }}}')
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (json) {
+          posts = json;
+          posts.forEach(function (post) {
+            appendPost(container, post);
+          });
+          console.log(posts);
+        });
+    </script>
+
+</main>
+
+</body>
+</html>

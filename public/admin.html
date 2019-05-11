@@ -1,68 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>zachary.hughes</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
-        <link href="admin.css" rel="stylesheet">
-    </head>
+<head>
+    <title>zachary.hughes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+    <link href="admin.css" rel="stylesheet">
+</head>
 <body>
-    <main>
-        <h1>admin</h1>
-            <form method="POST" action="/posts" enctype="multipart/form-data">
-                <fieldset>
-                    <legend>New Post</legend>
-                    <p>
-                        <input type="text" name="post-title" id="post-title" aria-describedby="post-title" placeholder="Enter title of your post">
-                        <label for="post-title">Title</label>
-                    </p>
-                    <p>
-                        <input type="text" name="post-description" id="post-description" placeholder="Description">
-                        <label for="post-description">Description</label>
-                        <small class="form-text text-muted">Short summary describing the content of your post.</small>
-                    </p>
-                    <p>
-                        <input type="text" name="post-tag" id="post-tag" placeholder="Tag">
-                        <label for="post-tag">Tag</label>
-                        <small class="form-text text-muted">Topic of your post</small>
-                    </p>
-                    <p>
-                        <input type="text" name="post-tag" id="post-tag" placeholder="Tag">
-                        <label for="post-tag">Tag</label>
-                        <small class="form-text text-muted">Topic of your post</small>
-                    </p>
-                    <p>
-                        <textarea name="post-content" id="post-content" rows="10"></textarea>
-                        <label for="post-content">Content</label>
-                        <small class="form-text text-muted">The content of your post, written in Markdown.</small>
-                    </p>
-                    <p>
-                        <label for="post-img">Upload Image</label>
-            
-                        <span class="input-group-btn">
-                            <span class="btn btn-default btn-file">
-                                Browse... <input type="file" accept="image/*" name="post-img" id="post-img" onchange="previewImage(event)">
-                            </span>
-                        </span>
-                        
-                        <img id='img-upload'/>
-                    </p>
-                    <p>
-                        <input type="submit" class="btn btn-primary"></input>
-                    </p>
-                </fieldset>
-            </form>
-    </main>
-    
-    <script>
-        function previewImage(event) {
-            var reader = new FileReader();
-            reader.onload = function() {
-                var output = document.getElementById('img-upload');
-                output.src = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
+<main>
+    <h1>admin</h1>
+    <form method="POST" action="/dev" enctype="multipart/form-data">
+        <fieldset>
+            <legend>New Post</legend>
+            <p>
+                <label for="post-title">Title</label>
+                <input type="text" name="post-title" id="post-title" aria-describedby="post-title">
+            </p>
+            <p>
+                <label for="post-tag">Tags</label>
+                <input type="text" name="post-tag" id="post-tag">
+                <small>Separated by commas</small>
+            </p>
+            <p>
+                <label for="post-content">Content</label>
+                <textarea name="post-content" id="post-content" rows="10"></textarea>
+                <small>The content of your post, written in Markdown.</small>
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+        </fieldset>
+    </form>
+    <form method="POST" action="/music" enctype="multipart/form-data">
+        <fieldset>
+            <legend>New Music</legend>
+            <p>
+                <label for="music-title">Title</label>
+                <input type="text" name="music-title" id="music-title">
+            </p>
+            <p>
+                <label for="music-artist">Artist</label>
+                <input type="text" name="music-artist" id="music-artist">
+            </p>
+            <p>
+                <label for="music-tags">Tags</label>
+                <input type="text" name="music-tags" id="music-tags">
+                <small>Separated by commas</small>
+            </p>
+            <p>
+                <label for="music-content">Content</label>
+                <textarea name="music-content" id="music-content" rows="10"></textarea>
+                <small>The content of your post, written in Markdown.</small>
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+        </fieldset>
+    </form>
+
+    <form method="POST" action="/film" enctype="multipart/form-data">
+        <fieldset>
+            <legend>New Film</legend>
+            <p>
+                <label for="film-title">Title</label>
+                <input type="text" name="film-title" id="film-title">
+            </p>
+            <p>
+                <label for="film-tags">Tags</label>
+                <input type="text" name="film-tags" id="film-tags">
+                <small>Separated by commas</small>
+            </p>
+            <p>
+                <label for="film-content">Content</label>
+                <textarea name="film-content" id="film-content" rows="10"></textarea>
+                <small>The content of your post, written in Markdown.</small>
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+        </fieldset>
+    </form>
+</main>
 </body>
 </html>

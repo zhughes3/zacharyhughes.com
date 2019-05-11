@@ -1,62 +1,60 @@
-'use strict';
-
-const Hapi = require('hapi');
+const hapi = require('hapi');
 const config = require('config');
-const Path = require('path');
-const Handlebars = require('handlebars');
+const path = require('path');
+const handlebars = require('handlebars');
 
 const routes = require('./routes');
 const plugins = require('./plugins');
 const logger = require('./server/utils/logger');
-const validate = require('./server/users/userHandler').validate;
+const { validate } = require('./server/users/userHandler');
 
-exports.deployment = async() => {
-    const server = new Hapi.server({
-        host: config.get('app.host'),
-        port: config.get('app.port'),
-        routes: {
-            files: {
-                relativeTo: Path.join(__dirname, 'public')
-            }
-        }
+exports.deployment = async () => {
+  const server = new hapi.server({
+    host: config.get('app.host'),
+    port: config.get('app.port'),
+    routes: {
+      files: {
+        relativeTo: path.join(__dirname, 'public'),
+      },
+    },
+  });
+
+  const gracefulStopServer = function () {
+    server.stop({ timeout: 10 * 1000 }, () => {
+      logger.info('Shutting down server.');
+      process.exit(0);
     });
+  }; 444;
 
-    const gracefulStopServer = function() {
-        server.stop({timeout: 10 * 1000}, () => {
-            logger.info('Shutting down server.');
-            process.exit(0);
-        })
-    };
-    
-    process.on('uncaughtException', err => {
-        logger.error(err, 'Uncaught exception');
-        process.exit(1);
-    });
-    
-    process.on('unhandledRejection', (reason,promise) => {
-        logger.error({
-            promise: promise,
-            reason: reason
-        }, 'unhandledRejection');
-        process.exit(1);
-    });
-    
-    process.on('SIGINT', gracefulStopServer);
-    process.on('SIGTERM', gracefulStopServer);
+  process.on('uncaughtException', (err) => {
+    logger.error(err, 'Uncaught exception');
+    process.exit(1);
+  });
 
-    await server.register(plugins);
+  process.on('unhandledRejection', (reason, promise) => {
+    logger.error({
+      promise,
+      reason,
+    }, 'unhandledRejection');
+    process.exit(1);
+  });
 
-    server.auth.strategy('simple', 'basic', { validate });
+  process.on('SIGINT', gracefulStopServer);
+  process.on('SIGTERM', gracefulStopServer);
 
-    server.views({
-        engines: {
-            html: Handlebars
-        },
-        relativeTo: __dirname,
-        path: 'templates'
-    });
+  await server.register(plugins);
 
-    server.route(routes);
+  server.auth.strategy('simple', 'basic', { validate });
 
-    return server;
+  server.views({
+    engines: {
+      html: handlebars,
+    },
+    relativeTo: __dirname,
+    path: 'templates',
+  });
+
+  server.route(routes);
+
+  return server;
 };

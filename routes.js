@@ -1,65 +1,57 @@
-'use strict';
-
 const glob = require('glob');
 const path = require('path');
 const _ = require('lodash');
+const config = require('config');
 
 const routes = [
-    {
-        method: 'GET',
-        path: '/ping',
-        handler: function(request, h) {
-            return 'pong';
-        },
-        config: {
-            tags: ['api']
-        }
+  {
+    method: 'GET',
+    path: '/ping',
+    handler(request, h) {
+      return 'pong';
     },
-    {
-        method: 'GET',
-        path: '/{param*}',
-        handler: {
-            directory: {
-                path: '.',
-                listing: true
-            }
-        }
+    config: {
+      tags: ['api'],
     },
-    {
-        method: 'GET',
-        path: '/',
-        handler: function(request, h) {
-            return h.file('index.html')
-        }
+  },
+  {
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+      directory: {
+        path: '.',
+        listing: true,
+      },
     },
-    {
-        method: 'GET',
-        path: '/admin',
-        handler: function(request, h) {
-            return h.file('admin.html')
-        },
-        config: {
-            auth: 'simple'
-        } 
+  },
+  {
+    method: 'GET',
+    path: '/',
+    handler(request, h) {
+      return h.file('index.html');
     },
-    {
-        method: 'GET',
-        path: '/dev',
-        handler: function(request, h) {
-            return h.file('posts-list.html');
-        }
+  },
+  {
+    method: 'GET',
+    path: '/admin',
+    handler(request, h) {
+      return h.file('admin.html');
     },
-    {
-        method: 'GET',
-        path: '/about',
-        handler: function(request, h) {
-            return h.file('about.html');
-        }
-    }
+    config: {
+      auth: 'simple',
+    },
+  },
+  {
+    method: 'GET',
+    path: '/about',
+    handler(request, h) {
+      return h.file('about.html');
+    },
+  },
 ];
 
 glob.sync('./server/**/*Routes.js').forEach((file) => {
-    routes.push(require(path.resolve(file)));
+  routes.push(require(path.resolve(file)));
 });
 
 module.exports = _.flattenDeep(routes);

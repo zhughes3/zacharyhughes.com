@@ -1,14 +1,12 @@
-'use strict';
-
-const Inert = require('inert');
-const Vision = require('vision');
-const HapiAuthBasic = require('hapi-auth-basic');
+const inert = require('inert');
+const vision = require('vision');
+const hapiAuthBasic = require('hapi-auth-basic');
 
 let plugins = [];
 plugins = plugins.concat([
-    Inert,
-    Vision,
-    HapiAuthBasic
+  inert,
+  vision,
+  hapiAuthBasic,
 ]);
 
 module.exports = plugins;

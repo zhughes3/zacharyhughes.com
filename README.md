@@ -34,9 +34,9 @@ A personal website powered by [Hapi.js](https://hapijs.com/)
 |-- routes.js
 |-- server # all subdirectories are REST models
 |   |-- dev
-|   |   |-- Dev.js
-|   |   |-- devHandler.js
-|   |   `-- devRoutes.js
+|   |   |-- Dev.js # mongoose model
+|   |   |-- devHandler.js # functionality to handle crud operations
+|   |   `-- devRoutes.js # configuration that defines the routes we are providing
 |   |-- etc
 |   |   |-- Etc.js
 |   |   |-- etcHandler.js

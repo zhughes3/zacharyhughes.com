@@ -27,23 +27,10 @@ A personal website powered by [Hapi.js](https://hapijs.com/)
 |-- index.js
 |-- package.json
 |-- plugins.js
-|-- public #public assets
-|   |-- 404.html
-|   |-- about.css
-|   |-- about.html
-|   |-- admin.css
-|   |-- admin.html
-|   |-- blurbs-list.html
-|   |-- dev-list.html
-|   |-- index.css
-|   |-- index.html
-|   |-- list.css
-|   |-- music-list.html
-|   |-- post.css
-|   |-- posts
-|   |   |-- deploy-jobs.md
-|   |   `-- posts.meta
-|   `-- utils.js
+|-- public 
+|   |-- css files
+|   |-- html files
+|   |-- js files
 |-- routes.js
 |-- server # all subdirectories are REST models
 |   |-- dev

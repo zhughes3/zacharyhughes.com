@@ -9,10 +9,12 @@ A personal website powered by [Hapi.js](https://hapijs.com/)
 3. [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/download/)
 
 ### Running the app
-- Development
+- Development (uses nodemon)
     - `npm run dev`
 - Production
     - `npm run prod`
+- Format Code, Identify Errors
+    - `npm run lint`
 
 ### Directory Structure
 
@@ -23,30 +25,76 @@ A personal website powered by [Hapi.js](https://hapijs.com/)
 |   `-- default.json
 |-- database.js
 |-- index.js
-|-- models
-|   |-- Blurb.js
-|   `-- Post.js
 |-- package.json
 |-- plugins.js
-|-- public # public assets
+|-- public #public assets
+|   |-- 404.html
+|   |-- about.css
+|   |-- about.html
+|   |-- admin.css
 |   |-- admin.html
-|   |-- blurbs-list.htm
-|   |-- images # uploaded images get saved here
-|   |-- posts-list.html
-|   |-- script.js
-|   `-- style.css
-|-- routes.js
-|-- server
+|   |-- blurbs-list.html
+|   |-- dev-list.html
+|   |-- index.css
+|   |-- index.html
+|   |-- list.css
+|   |-- music-list.html
+|   |-- post.css
 |   |-- posts
-|   |   |-- postHandler.js
-|   |   `-- postRoutes.js
-|   `-- utils
+|   |   |-- deploy-jobs.md
+|   |   `-- posts.meta
+|   `-- utils.js
+|-- routes.js
+|-- server # all subdirectories are REST models
+|   |-- dev
+|   |   |-- Dev.js
+|   |   |-- devHandler.js
+|   |   `-- devRoutes.js
+|   |-- etc
+|   |   |-- Etc.js
+|   |   |-- etcHandler.js
+|   |   `-- etcRoutes.js
+|   |-- film
+|   |   |-- Film.js
+|   |   |-- filmHandler.js
+|   |   `-- filmRoutes.js
+|   |-- music
+|   |   |-- Music.js
+|   |   |-- musicHandler.js
+|   |   `-- musicRoutes.js
+|   |-- users
+|   |   |-- User.js
+|   |   |-- userHandler.js
+|   |   `-- userRoutes.js
+|   `-- utils # functionality shared by models
 |       |-- logger.js
 |       `-- utils.js
 |-- server.js
-|-- templates # handlebar templates
+|-- templates # server-side templates
+|   |-- film.html
+|   |-- list.html
+|   |-- music.html
 |   `-- post.html
 `-- yarn.lock
 ```
 
+### What does the configuration file look like?
 
+With some of the configuration driving the functionality and look of the site, it is important to have the configuration 
+set up correctly. To do so, create a file in the root `config` directory called `default.json`. This is the filenaming 
+structure adopted by the configuration management package we use: [config](https://www.npmjs.com/package/config). This 
+file should resemble the following json:
+
+```json
+{
+    "app": {
+        "port": 3000,
+        "host": "localhost",
+        "name": "Your website name here",
+        "logLevel": "info"
+    },
+    "database": {
+        "url": "mongodb://localhost/your-collection-name-here"
+    }
+}
+```

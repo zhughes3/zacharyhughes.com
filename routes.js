@@ -1,7 +1,6 @@
 const glob = require('glob');
 const path = require('path');
 const _ = require('lodash');
-const config = require('config');
 
 const routes = [
   {
@@ -51,7 +50,7 @@ const routes = [
 ];
 
 glob.sync('./server/**/*Routes.js').forEach((file) => {
-  routes.push(require(path.resolve(file)));
+  routes.push(require(path.resolve(file))); // removing require will cause this to break
 });
 
 module.exports = _.flattenDeep(routes);

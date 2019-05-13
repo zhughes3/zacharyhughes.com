@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+// TODO take out references to Post, the name of the resource is now Dev
 const postSchema = new Schema({
   title: String,
   date: { type: Date, default: Date.now },

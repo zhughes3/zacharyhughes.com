@@ -1,14 +1,16 @@
 function toPrettyPrintDate(date) {
+  let prettyDate = '';
   if (!(date instanceof Date)) {
-    date = new Date(date);
+    prettyDate = new Date(date);
   }
   const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-  return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+  return `${months[prettyDate.getMonth()]} ${prettyDate.getDate()}, ${prettyDate.getFullYear()}`;
 }
 
-// force redirect to admin when you press escape
-document.onkeydown = function (e) {
-  if (e.keyCode == 27) {
+function goToAdmin(e) {
+  if (e.keyCode === 27) {
     window.location = '/admin';
   }
-};
+}
+
+document.onkeydown = goToAdmin;

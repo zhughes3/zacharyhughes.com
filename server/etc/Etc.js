@@ -2,14 +2,13 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const musicSchema = new Schema({
+const etcSchema = new Schema({
   title: String,
   date: { type: Date, default: Date.now },
-  artist: String,
-  slug: String,
+  img: String,
   content: String,
   tags: String,
-  img: Buffer,
+  slug: String,
 });
 
-module.exports = mongoose.model('Music', musicSchema);
+module.exports = mongoose.model('Etc', etcSchema);

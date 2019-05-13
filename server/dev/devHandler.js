@@ -11,7 +11,8 @@ const readDevs = async function (req, h) {
 };
 
 const readDev = async function (req, h) {
-  const { slug } = req.params;
+  let { slug } = req.params;
+  slug = encodeURIComponent(slug);
   const post = await Dev.find({ slug });
   return h.view('post', {
     title: config.get('app.name'),
@@ -30,7 +31,7 @@ const createDev = async function (req, h) {
   // const description = req.payload['post-description'];
   const content = utils.MarkdownToHtml(req.payload['post-content']);
   const tags = req.payload['post-tags'];
-  const slug = utils.TitleToSlug(title);
+  const slug = utils.ToSlug(title);
   const post = await new Dev({
     title,
     // description,

@@ -7,21 +7,30 @@ const readFilms = async function (req, h) {
 };
 
 const readFilm = async function (req, h) {
-  const { slug } = req.params;
+  let { slug } = req.params;
+  slug = encodeURIComponent(slug);
   const film = await Film.find({ slug });
-  return film;
+  return h.view('film', {
+    title: config.get('app.name'),
+    film: film[0],
+  });
 };
 
 const createFilm = async function (req, h) {
   console.log(req.payload);
+  const img = req.payload['film-img'];
+  const base64img = utils.BufferToBase64(img);
+  const genre = req.payload['film-genre'];
   const title = req.payload['film-title'];
   const tags = req.payload['film-tag'];
   const content = utils.MarkdownToHtml(req.payload['film-content']);
-  const slug = utils.TitleToSlug(title);
+  const slug = utils.ToSlug(title);
 
   const film = await new Film({
     title,
-    tag: tags,
+    tags,
+    img: base64img,
+    genre,
     slug,
     content,
   });

@@ -17,6 +17,7 @@ exports.deployment = async () => {
         relativeTo: path.join(__dirname, 'public'),
       },
     },
+    debug: { request: ['error'] },
   });
 
   const gracefulStopServer = function () {
@@ -24,7 +25,7 @@ exports.deployment = async () => {
       logger.info('Shutting down server.');
       process.exit(0);
     });
-  }; 444;
+  };
 
   process.on('uncaughtException', (err) => {
     logger.error(err, 'Uncaught exception');

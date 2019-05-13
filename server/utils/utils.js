@@ -2,6 +2,8 @@ const marked = require('marked');
 const uuidv1 = require('uuid/v1');
 const fs = require('fs');
 const Path = require('path');
+const logger = require('./logger');
+
 
 function uploader(file, opts) {
   if (!file) {
@@ -38,12 +40,22 @@ function _fileHandler(file, opts) {
   });
 }
 
+function BufferToBase64(buffer) {
+  if (!Buffer.isBuffer(buffer)) {
+    throw new Error('Cannot transform parameter to base64. Parameter must be of type Buffer.');
+  }
+
+  return buffer.toString('base64');
+}
+
 function MarkdownToHtml(markdown) {
   return marked(markdown);
 }
 
-function TitleToSlug(title) {
-  return encodeURIComponent(title.toLowerCase()
+function ToSlug(input) {
+  input = (Array.isArray(input) ? input.join(' ') : input);
+
+  return encodeURIComponent(input.toLowerCase()
     .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '') // remove all punctuation
     .replace(/ /g, '-'), // replace spaces with dashes
   );
@@ -52,5 +64,6 @@ function TitleToSlug(title) {
 module.exports = {
   uploader,
   MarkdownToHtml,
-  TitleToSlug,
+  ToSlug,
+  BufferToBase64,
 };

@@ -48,6 +48,10 @@
                 <small>Separated by commas</small>
             </p>
             <p>
+                <label for="music-img">Image</label>
+                <input type="file" accept="image/*" name="music-img" id="music-img">
+            </p>
+            <p>
                 <label for="music-content">Content</label>
                 <textarea name="music-content" id="music-content" rows="10"></textarea>
                 <small>The content of your post, written in Markdown.</small>
@@ -71,6 +75,14 @@
                 <small>Separated by commas</small>
             </p>
             <p>
+                <label for="film-genre">Genre</label>
+                <input type="text" name="film-genre" id="film-genre">
+            </p>
+            <p>
+                <label for="film-img">Image</label>
+                <input type="file" accept="image/*" name="film-img" id="film-img">
+            </p>
+            <p>
                 <label for="film-content">Content</label>
                 <textarea name="film-content" id="film-content" rows="10"></textarea>
                 <small>The content of your post, written in Markdown.</small>
@@ -80,6 +92,32 @@
             </p>
         </fieldset>
     </form>
+
+    <form method="POST" action="/etc" enctype="multipart/form-data">
+        <fieldset>
+            <legend>New Etc</legend>
+            <p>
+                <label for="etc-title">Title</label>
+                <input type="text" name="etc-title" id="etc-title">
+            </p>
+            <p>
+                <label for="etc-tags">Tags</label>
+                <input type="text" name="etc-tags" id="etc-tags">
+                <small>Separated by commas</small>
+            </p>
+            <p>
+                <label for="etc-img">Image</label>
+                <input type="file" accept="image/*" name="etc-img" id="etc-img">
+            </p>
+            <p>
+                <label for="etc-content">Content</label>
+                <textarea name="etc-content" id="etc-content" rows="10"></textarea>
+                <small>The content of your post, written in Markdown.</small>
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+        </fieldset>
 </main>
 </body>
 </html>

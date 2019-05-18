@@ -13,7 +13,7 @@ const routes = [
   },
   {
     method: 'GET',
-    path: '/etc{slug}',
+    path: '/etc/{slug}',
     handler: etcHandler.readEtc,
   },
   {

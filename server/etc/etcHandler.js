@@ -18,16 +18,19 @@ const readEtc = async function (req, h) {
 
 const createEtc = async function (req, h) {
   console.log(req.payload);
-  const img = utils.BufferToBase64(req.payload['etc-img']);
+  const img = req.payload['etc-img'];
+  const base64Img = utils.BufferToBase64(img);
   const title = req.payload['etc-title'];
+  const slug = utils.ToSlug(title);
   const tags = req.payload['etc-tags'];
-  const content = req.payload['etc-content'];
+  const content = utils.MarkdownToHtml(req.payload['etc-content']);
 
   const etc = await new Etc({
     title,
-    img,
+    img: base64Img,
     tags,
     content,
+    slug
   });
 
   etc.save();

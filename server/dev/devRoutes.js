@@ -12,11 +12,14 @@ const routes = [
         allow: 'multipart/form-data',
       },
     },
+    config: {
+      auth: 'simple',
+    }
   },
   {
     method: 'GET',
     path: '/dev',
-    handler: devHandler.readDevs,
+    handler: devHandler.readDevs
   },
   {
     method: 'GET',

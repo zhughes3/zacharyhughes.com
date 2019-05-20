@@ -10,6 +10,9 @@ const routes = [
     method: 'POST',
     path: '/etc',
     handler: etcHandler.createEtc,
+    config: {
+      auth: 'simple',
+    }
   },
   {
     method: 'GET',

@@ -10,6 +10,9 @@ const routes = [
     method: 'POST',
     path: '/music',
     handler: musicHandler.createMusic,
+    config: {
+      auth: 'simple',
+    }
   },
   {
     method: 'GET',

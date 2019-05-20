@@ -15,6 +15,9 @@ const routes = [
     method: 'POST',
     path: '/film',
     handler: filmHandler.createFilm,
+    config: {
+      auth: 'simple',
+    }
   },
   {
     method: 'GET',

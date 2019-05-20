@@ -1,5 +1,3 @@
-
-
 const userHandler = require('./userHandler');
 
 const routes = [

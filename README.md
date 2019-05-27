@@ -1,12 +1,12 @@
-# ZacharyHughes.com
+# zacharyhughes.com
 
 A personal website powered by [Hapi.js](https://hapijs.com/)
 
 ### Prereqs
 
 1. [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
-2. [nodemon](https://nodemon.io/)
-3. [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/download/)
+2. [Node.js](https://nodejs.org/en/)
+3. [nodemon](https://nodemon.io/) (for development)
 
 ### Running the app
 - Development (uses nodemon)
@@ -21,7 +21,7 @@ A personal website powered by [Hapi.js](https://hapijs.com/)
 ```txt
 .
 |-- README.md
-|-- config # environment variables
+|-- config # environment variables, see configuration section below
 |   `-- default.json
 |-- database.js
 |-- index.js
@@ -35,8 +35,8 @@ A personal website powered by [Hapi.js](https://hapijs.com/)
 |-- server # all subdirectories are REST models
 |   |-- dev
 |   |   |-- Dev.js # mongoose model
-|   |   |-- devHandler.js # functionality to handle crud operations
-|   |   `-- devRoutes.js # configuration that defines the routes we are providing
+|   |   |-- devHandler.js # crud operations
+|   |   `-- devRoutes.js # route configuration
 |   |-- etc
 |   |   |-- Etc.js
 |   |   |-- etcHandler.js

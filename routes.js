@@ -1,5 +1,7 @@
 const glob = require('glob');
+const config = require('config');
 const path = require('path');
+const logger = require('./server/utils/logger');
 const _ = require('lodash');
 
 const routes = [
@@ -10,6 +12,7 @@ const routes = [
       return 'pong';
     },
     config: {
+      auth: false,
       tags: ['api'],
     },
   },
@@ -22,6 +25,7 @@ const routes = [
         listing: true,
       },
     },
+    config: { auth: false}
   },
   {
     method: 'GET',
@@ -29,6 +33,7 @@ const routes = [
     handler(request, h) {
       return h.file('index.html');
     },
+    config: { auth: false }
   },
   {
     method: 'GET',
@@ -37,7 +42,7 @@ const routes = [
       return h.file('admin.html');
     },
     config: {
-      auth: 'simple',
+      auth: false,
     },
   },
   {
@@ -46,7 +51,8 @@ const routes = [
     handler(request, h) {
       return h.file('about.html');
     },
-  },
+    config: {auth: false}
+  }
 ];
 
 glob.sync('./server/**/*Routes.js').forEach((file) => {

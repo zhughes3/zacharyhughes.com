@@ -1,5 +1,3 @@
-
-
 const userHandler = require('./userHandler');
 
 const routes = [
@@ -8,6 +6,12 @@ const routes = [
     path: '/users',
     handler: userHandler.createUser,
   },
+  {
+    method: 'POST',
+    path: '/login',
+    handler: userHandler.login,
+    config: {auth: false}
+  }
 ];
 
 module.exports = routes;

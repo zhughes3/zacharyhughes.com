@@ -17,7 +17,6 @@ const readEtc = async function (req, h) {
 };
 
 const createEtc = async function (req, h) {
-  console.log(req.payload);
   const img = req.payload['etc-img'];
   const base64Img = utils.BufferToBase64(img);
   const title = req.payload['etc-title'];
@@ -35,7 +34,10 @@ const createEtc = async function (req, h) {
 
   etc.save();
 
-  return h.redirect('/etc/all');
+  return h.response({
+    success: true,
+    message: 'Etc saved successfully'
+  }).code(201);
 };
 
 const renderEtcs = async function (req, h) {

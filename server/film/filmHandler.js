@@ -37,7 +37,10 @@ const createFilm = async function (req, h) {
 
   film.save();
 
-  return h.redirect('/film/all');
+  return h.response({
+    success: true,
+    message: 'Film saved successfully'
+  }).code(201);
 };
 
 const renderFilms = async function (req, h) {

@@ -37,7 +37,10 @@ const createMusic = async function (req, h) {
 
   music.save();
 
-  return h.redirect('/music/all');
+  return h.response({
+    success: true,
+    message: 'Music saved successfully'
+  }).code(201);
 };
 
 const renderMusics = async function (req, h) {

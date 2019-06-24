@@ -12,7 +12,7 @@
 <main>
     <article>
         <header>
-            <h1>{{ music.artist }} - {{ music.title }}</h1>
+            <h1>{{ toLowerCase music.artist }} - {{ toLowerCase music.title }}</h1>
             <time datetime="{{ music.date}}">{{ music.date }}</time>
             {{#if music.img}}
             <img height="250" width="250" src="data:image/png;base64,{{ music.img }}"/>

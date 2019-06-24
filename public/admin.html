@@ -17,7 +17,7 @@
         <button class="tablinks" onclick="openForm(event, 'etc')">etc</button>
     </div>
 
-    <form method="POST" action="/dev" enctype="multipart/form-data" class="tabcontent" id="dev">
+    <div class="tabcontent" id="dev">
         <fieldset>
             <legend>New Dev</legend>
             <p>
@@ -35,11 +35,12 @@
                 <small>The content of your post, written in Markdown.</small>
             </p>
             <p>
-                <input type="submit">
+                <input type="submit" onclick="postDev()">
             </p>
         </fieldset>
-    </form>
-    <form method="POST" action="/music" enctype="multipart/form-data" class="tabcontent" id="music">
+    </div>
+
+    <div class="tabcontent" id="music">
         <fieldset>
             <legend>New Music</legend>
             <p>
@@ -65,12 +66,12 @@
                 <small>The content of your post, written in Markdown.</small>
             </p>
             <p>
-                <input type="submit">
+                <input type="submit" onclick="postMusic()">
             </p>
         </fieldset>
-    </form>
+    </div>
 
-    <form method="POST" action="/film" enctype="multipart/form-data" class="tabcontent" id="film">
+    <div class="tabcontent" id="film">
         <fieldset>
             <legend>New Film</legend>
             <p>
@@ -96,12 +97,12 @@
                 <small>The content of your post, written in Markdown.</small>
             </p>
             <p>
-                <input type="submit">
+                <input type="submit" onclick="postFilm()">
             </p>
         </fieldset>
-    </form>
+    </div>
 
-    <form method="POST" action="/etc" enctype="multipart/form-data" class="tabcontent" id="etc">
+    <div class="tabcontent" id="etc">
         <fieldset>
             <legend>New Etc</legend>
             <p>
@@ -123,11 +124,89 @@
                 <small>The content of your post, written in Markdown.</small>
             </p>
             <p>
-                <input type="submit">
+                <input type="submit" onclick="postEtc()">
             </p>
         </fieldset>
-    </form>
-
+    </div>
 </main>
+<script>
+    function postDev() {
+        var title = document.getElementById('post-title').value;
+        var tags = document.getElementById('post-tag').value;
+        var content = document.getElementById('post-content').value;
+        var data = {
+            "post-title": title,
+            "post-tags": tags,
+            "post-content": content
+        };
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/dev', true);
+        xhr.withCredentials = true;
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('Authorization', `${localStorage.getItem('token')}`);
+        xhr.onreadystatechange = function() {
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 201) {
+                window.location = '/dev/all';
+            }
+        };
+        xhr.send(JSON.stringify(data));
+    }
+
+    function postEtc() {
+        var formData = new FormData();
+        formData.append('etc-title', document.getElementById('etc-title').value);
+        formData.append('etc-tags', document.getElementById('etc-tags').value);
+        formData.append('etc-content', document.getElementById('etc-content').value);
+        formData.append('etc-img', document.getElementById('etc-img').files[0]);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/etc', true);
+        xhr.withCredentials = true;
+        xhr.setRequestHeader('Authorization', `${localStorage.getItem('token')}`);
+        xhr.onreadystatechange = function() { 
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 201) {
+                window.location = '/etc/all';
+            }
+        };
+        xhr.send(formData);
+    }
+
+    function postMusic() {
+        var formData = new FormData();
+        formData.append('music-title', document.getElementById('music-title').value);
+        formData.append('music-artist', document.getElementById('music-artist').value);
+        formData.append('music-tags', document.getElementById('music-tags').value);
+        formData.append('music-content', document.getElementById('music-content').value);
+        formData.append('music-img', document.getElementById('music-img').files[0]);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/music', true);
+        xhr.withCredentials = true;
+        xhr.setRequestHeader('Authorization', `${localStorage.getItem('token')}`);
+        xhr.onreadystatechange = function() { 
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 201) {
+                window.location = '/music/all';
+            }
+        };
+        xhr.send(formData);
+    }
+
+    function postFilm() {
+        var formData = new FormData();
+        formData.append('film-title', document.getElementById('film-title').value);
+        formData.append('film-tags', document.getElementById('film-tags').value);
+        formData.append('film-genre', document.getElementById('film-genre').value);
+        formData.append('film-content', document.getElementById('film-content').value);
+        formData.append('film-img', document.getElementById('film-img').files[0]);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/film', true);
+        xhr.withCredentials = true;
+        xhr.setRequestHeader('Authorization', `${localStorage.getItem('token')}`);
+        xhr.onreadystatechange = function() {
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 201) {
+                window.location = '/film/all';
+            }
+        };
+        xhr.send(formData);
+    }
+</script>
 </body>
 </html>
